@@ -1,4 +1,4 @@
-module m5adminapi
+module github.com/Oskar-jansson/m5adminapi
 
 go 1.26.1
 

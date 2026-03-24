@@ -1,8 +1,8 @@
 package m5adminapi
 
 import (
-	"m5adminapi/internal/client"
-	"m5adminapi/services"
+	"github.com/Oskar-jansson/m5adminapi/internal/client"
+	"github.com/Oskar-jansson/m5adminapi/services"
 )
 
 // Wrapper over client.Client as client exists within internal

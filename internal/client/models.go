@@ -2,9 +2,10 @@ package client
 
 import (
 	"crypto/tls"
-	"m5adminapi/models"
 	"sync"
 	"time"
+
+	"github.com/Oskar-jansson/m5adminapi/models"
 )
 
 // Root object of http requests wrapper

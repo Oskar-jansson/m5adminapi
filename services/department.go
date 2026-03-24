@@ -4,9 +4,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"m5adminapi/internal/client"
-	"m5adminapi/internal/options"
-	"m5adminapi/models"
+
+	"github.com/Oskar-jansson/m5adminapi/internal/client"
+	"github.com/Oskar-jansson/m5adminapi/internal/options"
+	"github.com/Oskar-jansson/m5adminapi/models"
 )
 
 type DepartmentService struct{ client *client.Client }

@@ -3,10 +3,11 @@ package services
 import (
 	"context"
 	"fmt"
-	"m5adminapi/internal/client"
-	"m5adminapi/models"
 	"strconv"
 	"strings"
+
+	"github.com/Oskar-jansson/m5adminapi/internal/client"
+	"github.com/Oskar-jansson/m5adminapi/models"
 )
 
 type VersionService struct {

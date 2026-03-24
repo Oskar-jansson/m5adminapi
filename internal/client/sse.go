@@ -6,8 +6,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"m5adminapi/models"
 	"net/http"
+
+	"github.com/Oskar-jansson/m5adminapi/models"
 )
 
 func (c *Client) RequestStream(ctx context.Context, url string) (*bufio.Scanner, func() error, *models.SdkError) {

@@ -2,8 +2,9 @@ package services
 
 import (
 	"context"
-	"m5adminapi/internal/client"
-	"m5adminapi/models"
+
+	"github.com/Oskar-jansson/m5adminapi/internal/client"
+	"github.com/Oskar-jansson/m5adminapi/models"
 )
 
 type UnsafeService struct {

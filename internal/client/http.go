@@ -7,10 +7,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"m5adminapi/models"
 	"net/http"
 	"sync"
 	"time"
+
+	"github.com/Oskar-jansson/m5adminapi/models"
 
 	// validates schema
 	val "github.com/go-playground/validator/v10"

@@ -8,6 +8,7 @@ import (
 	"github.com/Oskar-jansson/m5adminapi/models"
 )
 
+//nolint:all
 func main() {
 
 	// Errors returned from sdk ar in this format.

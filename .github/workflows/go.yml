@@ -31,6 +31,4 @@ jobs:
         uses: golangci/golangci-lint-action@v7
         with:
           version: v2.11.4
-
-          # skip md files and example folder
-          args: --timeout=5m --skip-files=".*\.md$" --skip-dirs="example"
+          args: --timeout=5m

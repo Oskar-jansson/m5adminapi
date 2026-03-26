@@ -46,12 +46,11 @@ func (s *VersionService) Get(ctx context.Context) (*models.Version, *models.SdkE
 		// parse version into models.version
 		arr := strings.Split(r.V, ".")
 
-		// Lint checks does not like when errors areoverwritten.
-		// Here we do not care what error we get as we returned error is custom.
-		major, err := strconv.Atoi(arr[0])                           //nolint:ineffassign
-		middle, err := strconv.Atoi(arr[1])                          //nolint:ineffassign
-		minor, err := strconv.Atoi(arr[2])                           //nolint:ineffassign
-		full, err := strconv.Atoi(strings.Replace(r.V, ".", "", -1)) //nolint:ineffassign
+		// Lint checks does not like when errors are overwritten. Skip Lint on following rows:
+		major, err := strconv.Atoi(arr[0])                           //nolint:all
+		middle, err := strconv.Atoi(arr[1])                          //nolint:all
+		minor, err := strconv.Atoi(arr[2])                           //nolint:all
+		full, err := strconv.Atoi(strings.Replace(r.V, ".", "", -1)) //nolint:all
 
 		if err != nil {
 			return nil, &models.SdkError{Err: fmt.Errorf("could not parse response into object: %v", err)}

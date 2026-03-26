@@ -58,7 +58,7 @@ func (s *FunctionService) Edit(ctx context.Context, id uint32, changes *models.F
 
 	body, err := json.Marshal(changes)
 	if err != nil {
-		return nil, &models.SdkError{Err: fmt.Errorf("Could not marshal input object to json")}
+		return nil, &models.SdkError{Err: fmt.Errorf("could not marshal input object to json")}
 	}
 
 	url := fmt.Sprintf("%s/function/%d", s.client.Path, id)
@@ -82,7 +82,7 @@ func (s *FunctionService) Edit(ctx context.Context, id uint32, changes *models.F
 func (s *FunctionService) Create(ctx context.Context, function *models.FunctionInput, opt ...string) (*models.Function, *models.SdkError) {
 	body, err := json.Marshal(function)
 	if err != nil {
-		return nil, &models.SdkError{Err: fmt.Errorf("Could not marshal input object to json")}
+		return nil, &models.SdkError{Err: fmt.Errorf("could not marshal input object to json")}
 	}
 
 	url := fmt.Sprintf("%s/function", s.client.Path)

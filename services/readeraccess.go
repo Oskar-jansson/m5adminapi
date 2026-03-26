@@ -38,7 +38,7 @@ func (s *Readeraccess) List(ctx context.Context, opt ...string) (*models.Readera
 func (s *Readeraccess) Create(ctx context.Context, cardId int, Readeraccess *models.ReaderaccessInput) (*models.Readeraccess, *models.SdkError) {
 	body, err := json.Marshal(Readeraccess)
 	if err != nil {
-		return nil, &models.SdkError{Err: fmt.Errorf("Could not marshal input object to json")}
+		return nil, &models.SdkError{Err: fmt.Errorf("could not marshal input object to json")}
 	}
 
 	url := fmt.Sprintf("%s/card/%d/readeraccess", s.client.Path, cardId)

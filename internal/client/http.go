@@ -275,7 +275,9 @@ func (c *Client) buildAndExecuteRequest(ctx context.Context, client *http.Client
 	if err != nil {
 		return nil, fmt.Errorf("request execution failed: %w", err)
 	}
-	defer resp.Body.Close()
+	defer func() {
+		_ = resp.Body.Close() // disregard error
+	}()
 
 	// Read response body
 	bodyBytes, err := io.ReadAll(resp.Body)

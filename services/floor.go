@@ -58,7 +58,7 @@ func (s *FloorService) Edit(ctx context.Context, id uint32, changes *models.Floo
 
 	body, err := json.Marshal(changes)
 	if err != nil {
-		return nil, &models.SdkError{Err: fmt.Errorf("Could not marshal input object to json")}
+		return nil, &models.SdkError{Err: fmt.Errorf("could not marshal input object to json")}
 	}
 
 	url := fmt.Sprintf("%s/floor/%d", s.client.Path, id)

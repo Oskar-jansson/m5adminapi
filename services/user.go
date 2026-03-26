@@ -63,7 +63,7 @@ func (s *UserService) Edit(ctx context.Context, id uint32, changes *models.UserI
 
 	body, err := json.Marshal(changes)
 	if err != nil {
-		return nil, &models.SdkError{Err: fmt.Errorf("Could not marshal input object to json")}
+		return nil, &models.SdkError{Err: fmt.Errorf("could not marshal input object to json")}
 	}
 
 	url := fmt.Sprintf("%s/user/%d", s.client.Path, id)
@@ -87,7 +87,7 @@ func (s *UserService) Edit(ctx context.Context, id uint32, changes *models.UserI
 func (s *UserService) Create(ctx context.Context, user *models.UserInput, opt ...string) (*models.User, *models.SdkError) {
 	body, err := json.Marshal(user)
 	if err != nil {
-		return nil, &models.SdkError{Err: fmt.Errorf("Could not marshal input object to json")}
+		return nil, &models.SdkError{Err: fmt.Errorf("could not marshal input object to json")}
 	}
 
 	url := fmt.Sprintf("%s/user", s.client.Path)

@@ -61,7 +61,7 @@ func (s *UsergroupService) Edit(ctx context.Context, id uint32, changes *models.
 
 	body, err := json.Marshal(changes)
 	if err != nil {
-		return nil, &models.SdkError{Err: fmt.Errorf("Could not marshal input object to json")}
+		return nil, &models.SdkError{Err: fmt.Errorf("could not marshal input object to json")}
 	}
 
 	url := fmt.Sprintf("%s/usergroup/%d", s.client.Path, id)
@@ -85,7 +85,7 @@ func (s *UsergroupService) Edit(ctx context.Context, id uint32, changes *models.
 func (s *UsergroupService) Create(ctx context.Context, usergroup *models.UsergroupInput, opt ...string) (*models.Usergroup, *models.SdkError) {
 	body, err := json.Marshal(usergroup)
 	if err != nil {
-		return nil, &models.SdkError{Err: fmt.Errorf("Could not marshal input object to json")}
+		return nil, &models.SdkError{Err: fmt.Errorf("could not marshal input object to json")}
 	}
 
 	url := fmt.Sprintf("%s/usergroup", s.client.Path)

@@ -46,10 +46,12 @@ func (s *VersionService) Get(ctx context.Context) (*models.Version, *models.SdkE
 		// parse version into models.version
 		arr := strings.Split(r.V, ".")
 
-		major, err := strconv.Atoi(arr[0])
-		middle, err := strconv.Atoi(arr[1])
-		minor, err := strconv.Atoi(arr[2])
-		full, err := strconv.Atoi(strings.Replace(r.V, ".", "", -1))
+		// Lint checks does not like when errors areoverwritten.
+		// Here we do not care what error we get as we returned error is custom.
+		major, err := strconv.Atoi(arr[0])                           //nolint:ineffassign
+		middle, err := strconv.Atoi(arr[1])                          //nolint:ineffassign
+		minor, err := strconv.Atoi(arr[2])                           //nolint:ineffassign
+		full, err := strconv.Atoi(strings.Replace(r.V, ".", "", -1)) //nolint:ineffassign
 
 		if err != nil {
 			return nil, &models.SdkError{Err: fmt.Errorf("Could not parse response into object")}

@@ -58,7 +58,7 @@ func (s *CardService) Edit(ctx context.Context, id uint32, changes *models.CardI
 
 	body, err := json.Marshal(changes)
 	if err != nil {
-		return nil, &models.SdkError{Err: fmt.Errorf("Could not marshal input object to json")}
+		return nil, &models.SdkError{Err: fmt.Errorf("could not marshal input object to json")}
 	}
 
 	url := fmt.Sprintf("%s/card/%d", s.client.Path, id)
@@ -82,7 +82,7 @@ func (s *CardService) Edit(ctx context.Context, id uint32, changes *models.CardI
 func (s *CardService) Create(ctx context.Context, card *models.CardInput) (*models.Card, *models.SdkError) {
 	body, err := json.Marshal(card)
 	if err != nil {
-		return nil, &models.SdkError{Err: fmt.Errorf("Could not marshal input object to json")}
+		return nil, &models.SdkError{Err: fmt.Errorf("could not marshal input object to json")}
 	}
 
 	url := fmt.Sprintf("%s/card", s.client.Path)
@@ -172,7 +172,7 @@ func (s *CardService) BlockCards(ctx context.Context, list []int) *models.SdkErr
 
 	body, err := json.Marshal(mapList)
 	if err != nil {
-		return &models.SdkError{Err: fmt.Errorf("Could not marshal input object to json")}
+		return &models.SdkError{Err: fmt.Errorf("could not marshal input object to json")}
 	}
 
 	url := fmt.Sprintf("%s/card/block", s.client.Path)

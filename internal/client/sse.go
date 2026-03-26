@@ -31,7 +31,7 @@ func (c *Client) RequestStream(ctx context.Context, url string) (*bufio.Scanner,
 	}
 
 	if resp.StatusCode != 200 {
-		resp.Body.Close()
+		_ = resp.Body.Close() // disregard error as stream was never open. Instead use custom error.
 		return nil, nil, &models.SdkError{Err: fmt.Errorf("status not ok, stream was not initiated")}
 	}
 
@@ -41,7 +41,11 @@ func (c *Client) RequestStream(ctx context.Context, url string) (*bufio.Scanner,
 
 func (c *Client) ReadStream(ctx context.Context, scanner *bufio.Scanner, handler func(*models.Event), scannerClose func() error) {
 	defer func() {
-		scannerClose()
+		if err := scannerClose(); err != nil {
+
+			// attempt to send error over stream, otherwise void
+			handler(&models.Event{InternalError: err})
+		}
 	}()
 
 	for scanner.Scan() {

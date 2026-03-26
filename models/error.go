@@ -1,17 +1,6 @@
 package models
 
-// Keep all API resource structs here.
-
-// Credentials used to authenticate
-type Credentials struct {
-	Id       string `json:"id"`
-	System   string `json:"system"`
-	Lang     string `json:"lang"`
-	User     string `json:"user"`
-	Password string `json:"password"`
-	Apitype  string `json:"apitype"`
-	Apikey   string `json:"apikey"`
-}
+import "fmt"
 
 // Response on defined errors from api side
 type ErrorMessage struct {
@@ -27,4 +16,29 @@ type ErrorMessage struct {
 type SdkError struct {
 	Err          error         // General error
 	ErrorMessage *ErrorMessage // From Api
+}
+
+// Returns the underlying error or API error message.
+// Err is prioritized over ErrorMessage.
+func (e *SdkError) AsError() error {
+
+	if e == nil {
+		return nil
+	}
+
+	if e.Err != nil {
+		return e.Err
+	}
+	if e.ErrorMessage != nil {
+		return fmt.Errorf("%s", e.ErrorMessage.Friendlymessage)
+	}
+	return nil
+}
+
+func (e *SdkError) Unwrap() error {
+	if e == nil {
+		return nil
+	}
+
+	return e.Err
 }

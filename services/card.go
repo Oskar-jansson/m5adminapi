@@ -271,8 +271,14 @@ func (s *CardService) MergeCards(c1, c2 models.Card) *models.Card {
 		User:              coalesce[models.User](c2.User, c1.User),
 		Parentcard:        coalesceUint32(c2.Parentcard, c1.Parentcard),
 		Vacation:          coalesceUint32(c2.Vacation, c1.Vacation),
-		Accessalarms:      coalesce(c2.Accessalarms, c1.Accessalarms),
-		Accessgroups:      coalesceSlice(c2.Accessgroups, c1.Accessgroups),
-		Readeraccess:      coalesceSlice(c2.Readeraccess, c1.Readeraccess),
+
+		//nolint:all
+		Accessalarms: coalesce(c2.Accessalarms, c1.Accessalarms),
+
+		//nolint:all
+		Accessgroups: coalesceSlice(c2.Accessgroups, c1.Accessgroups),
+
+		//nolint:all
+		Readeraccess: coalesceSlice(c2.Readeraccess, c1.Readeraccess),
 	}
 }

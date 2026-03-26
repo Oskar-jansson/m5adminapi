@@ -262,10 +262,13 @@ func (s *UserService) MergeUsers(u1, u2 models.User) *models.User {
 		Showmeasure:           coalesceInt(u2.Showmeasure, u1.Showmeasure),
 		Showbooked:            coalesceInt(u2.Showbooked, u1.Showbooked),
 		Language:              coalesceInt(u2.Language, u1.Language),
-		Cards:                 coalesceSlice(u2.Cards, u1.Cards),
-		Department:            coalesce[models.Department](u2.Department, u1.Department),
-		Usergroup:             coalesce[models.Usergroup](u2.Usergroup, u1.Usergroup),
-		Floor:                 coalesce[models.Floor](u2.Floor, u1.Floor),
-		Accessgroups:          coalesceSlice(u2.Accessgroups, u1.Accessgroups),
+
+		//nolint:all
+		Cards: coalesceSlice(u2.Cards, u1.Cards),
+
+		Department:   coalesce[models.Department](u2.Department, u1.Department),
+		Usergroup:    coalesce[models.Usergroup](u2.Usergroup, u1.Usergroup),
+		Floor:        coalesce[models.Floor](u2.Floor, u1.Floor),
+		Accessgroups: coalesceSlice(u2.Accessgroups, u1.Accessgroups),
 	}
 }

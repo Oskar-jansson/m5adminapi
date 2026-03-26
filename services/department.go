@@ -134,9 +134,9 @@ func (s *DepartmentService) ConvDepartmentinputToDepartment(u models.DepartmentI
 // u2 fields take precedence over u1 fields (if u2 field is non-nil, use it).
 func (s *DepartmentService) MergeDepartments(u1, u2 models.Department) *models.Department {
 	return &models.Department{
-		Id:             coalesce(u2.Id, u1.Id),
-		Departmentname: coalesce(u2.Departmentname, u1.Departmentname),
-		Rastamp:        coalesce(u2.Rastamp, u1.Rastamp),
-		Departmentdata: coalesce(u2.Departmentdata, u1.Departmentdata),
+		Id:             coalesceUint32(u2.Id, u1.Id),
+		Departmentname: coalesceString(u2.Departmentname, u1.Departmentname),
+		Rastamp:        coalesceString(u2.Rastamp, u1.Rastamp),
+		Departmentdata: coalesceString(u2.Departmentdata, u1.Departmentdata),
 	}
 }

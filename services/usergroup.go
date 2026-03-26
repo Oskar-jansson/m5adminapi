@@ -136,10 +136,10 @@ func (s *UsergroupService) ConvUsergroupinputToUsergroup(u models.UsergroupInput
 // u2 fields take precedence over u1 fields (if u2 field is non-nil, use it).
 func (s *UsergroupService) MergeUsergroups(u1, u2 models.Usergroup) *models.Usergroup {
 	return &models.Usergroup{
-		Id:        coalesce(u2.Id, u1.Id),
-		Groupname: coalesce(u2.Groupname, u1.Groupname),
-		Rastamp:   coalesce(u2.Rastamp, u1.Rastamp),
-		Groupdata: coalesce(u2.Groupdata, u1.Groupdata),
+		Id:        coalesceUint32(u2.Id, u1.Id),
+		Groupname: coalesceString(u2.Groupname, u1.Groupname),
+		Rastamp:   coalesceString(u2.Rastamp, u1.Rastamp),
+		Groupdata: coalesceString(u2.Groupdata, u1.Groupdata),
 		Users:     coalesceSlice(u2.Users, u1.Users),
 	}
 }

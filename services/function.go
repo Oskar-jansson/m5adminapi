@@ -138,16 +138,16 @@ func (s *FunctionService) ConvFunctioninputToFunction(f models.FunctionInput) *m
 // f2 fields take precedence over f1 fields (if f2 field is non-nil, use it).
 func (s *FunctionService) MergeFunctions(f1, f2 models.Function) *models.Function {
 	return &models.Function{
-		Id:            coalesce(f2.Id, f1.Id),
-		Fkaccessgroup: coalesce(f2.Fkaccessgroup, f1.Fkaccessgroup),
-		Fkunit:        coalesce(f2.Fkunit, f1.Fkunit),
-		Times:         coalesce(f2.Times, f1.Times),
-		Timeperiods:   coalesce(f2.Timeperiods, f1.Timeperiods),
-		Activedays:    coalesce(f2.Activedays, f1.Activedays),
-		Type:          coalesce(f2.Type, f1.Type),
-		Comment:       coalesce(f2.Comment, f1.Comment),
-		Rastamp:       coalesce(f2.Rastamp, f1.Rastamp),
-		Unit:          coalesce(f2.Unit, f1.Unit),
-		Accessgroup:   coalesce(f2.Accessgroup, f1.Accessgroup),
+		Id:            coalesceUint32(f2.Id, f1.Id),
+		Fkaccessgroup: coalesceUint32(f2.Fkaccessgroup, f1.Fkaccessgroup),
+		Fkunit:        coalesceUint32(f2.Fkunit, f1.Fkunit),
+		Times:         coalesceString(f2.Times, f1.Times),
+		Timeperiods:   coalesceString(f2.Timeperiods, f1.Timeperiods),
+		Activedays:    coalesceString(f2.Activedays, f1.Activedays),
+		Type:          coalesceUint32(f2.Type, f1.Type),
+		Comment:       coalesceString(f2.Comment, f1.Comment),
+		Rastamp:       coalesceString(f2.Rastamp, f1.Rastamp),
+		Unit:          coalesce[models.Unit](f2.Unit, f1.Unit),
+		Accessgroup:   coalesce[models.Accessgroup](f2.Accessgroup, f1.Accessgroup),
 	}
 }

@@ -54,7 +54,7 @@ func (s *VersionService) Get(ctx context.Context) (*models.Version, *models.SdkE
 		full, err := strconv.Atoi(strings.Replace(r.V, ".", "", -1)) //nolint:ineffassign
 
 		if err != nil {
-			return nil, &models.SdkError{Err: fmt.Errorf("Could not parse response into object")}
+			return nil, &models.SdkError{Err: fmt.Errorf("could not parse response into object: %v", err)}
 		}
 
 		version = models.Version{

@@ -20,11 +20,6 @@ func NewEventService(c *client.Client) *EventService {
 	return &EventService{client: c}
 }
 
-var (
-	eventstreamsMu sync.RWMutex
-	Eventstreams   = make(map[string]*Eventstream)
-)
-
 // controller type for eventstream
 type Eventstream struct {
 	Stream chan *models.Event
@@ -62,13 +57,6 @@ func (es *Eventstream) Close() {
 	es.mu.Unlock()
 }
 
-// internal
-func (es *Eventstream) appendToGlobalList(name string) {
-	es.mu.Lock()
-	defer es.mu.Unlock()
-	Eventstreams[name] = es
-}
-
 // Starts new eventstream and returns eventstream controller.
 //
 // Stream takes about 50 sec to open correctly
@@ -97,7 +85,6 @@ func (s *EventService) StartEventstream(mainCtx context.Context, bufferSize int,
 
 		StartTime: time.Now(),
 	}
-	es.appendToGlobalList(s.client.Credentials.System)
 
 	es.OnEvent(func(ev *models.Event) {
 		if !es.HasSeenFirstEvent.Load() && ev.Ping == nil && ev.Error == nil && ev.InternalError == nil {

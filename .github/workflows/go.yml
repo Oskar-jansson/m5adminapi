@@ -32,5 +32,5 @@ jobs:
         with:
           version: v2.11.4
 
-          # skip md files
-          args: --timeout=5m --skip-files=".*\.md$"
+          # skip md files and example folder
+          args: --timeout=5m --skip-files=".*\.md$" --skip-dirs="example"

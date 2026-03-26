@@ -8,10 +8,6 @@ import (
 	"github.com/Oskar-jansson/m5adminapi/models"
 )
 
-func ptr[T any](v T) *T {
-	return &v
-}
-
 func main() {
 
 	// Errors returned from sdk ar in this format.

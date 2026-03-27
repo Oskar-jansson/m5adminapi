@@ -1,6 +1,9 @@
 package services
 
 // coalesce returns the first non-nil pointer value, or nil if both are nil
+// Alot of coalesce helper functions per data type to comply with lint.
+// Try and avoid skipping lint, but for special datatypes it cant be avoided.
+
 func coalesce[T any](a, b *T) *T {
 	if a != nil {
 		return a

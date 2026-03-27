@@ -136,7 +136,7 @@ func (s *DepartmentService) MergeDepartments(u1, u2 models.Department) *models.D
 	return &models.Department{
 		Id:             coalesceUint32(u2.Id, u1.Id),
 		Departmentname: coalesceString(u2.Departmentname, u1.Departmentname),
-		Rastamp:        coalesceString(u2.Rastamp, u1.Rastamp),
+		Rastamp:        coalesce(u2.Rastamp, u1.Rastamp), //nolint:all
 		Departmentdata: coalesceString(u2.Departmentdata, u1.Departmentdata),
 	}
 }

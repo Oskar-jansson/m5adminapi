@@ -13,7 +13,7 @@ type Offlineunit struct {
 	Unitsyncstatus   *uint32        `json:"unitsyncstatus"`
 	Unitedittime     *string        `json:"unitedittime"`
 	Lasteventtime    *string        `json:"lasteventtime" cmp:"skip"`
-	Rastamp          *string        `json:"rastamp" validate:"required" cmp:"skip"`
+	Rastamp          *Rastamp       `json:"rastamp" validate:"required" cmp:"skip"`
 	Accessversion    *uint32        `json:"accessversion" validate:"required" cmp:"skip"`
 	Versionstarttime *string        `json:"versionstarttime" cmp:"skip"`
 	Readeraccess     []Readeraccess `json:"readeraccess"`

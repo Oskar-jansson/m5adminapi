@@ -2,7 +2,7 @@ package models
 
 type Machinegroup struct {
 	Id                 *uint32           `json:"id" validate:"gt=0" cmp:"skip"`
-	Rastamp            *string           `json:"rastamp" validate:"required" cmp:"skip"`
+	Rastamp            *Rastamp          `json:"rastamp" validate:"required" cmp:"skip"`
 	Name               *string           `json:"name" validate:"required"`
 	Fkmachinegrouptype *uint32           `json:"fkmachinegrouptype" validate:"required"`
 	Unit               *uint32           `json:"unit" validate:"required"`

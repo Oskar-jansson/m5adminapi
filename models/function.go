@@ -9,7 +9,7 @@ type Function struct {
 	Activedays    *string      `json:"activedays"`
 	Type          *uint32      `json:"type" validate:"required"`
 	Comment       *string      `json:"comment"`
-	Rastamp       *string      `json:"rastamp" validate:"required" cmp:"skip"`
+	Rastamp       *Rastamp     `json:"rastamp" validate:"required" cmp:"skip"`
 	Unit          *Unit        `json:"unit"`
 	Accessgroup   *Accessgroup `json:"Accessgroup"`
 }
@@ -27,7 +27,7 @@ type FunctionInput struct {
 	Activedays    *string      `json:"activedays,omitempty"`
 	Type          *uint32      `json:"type,omitempty"`
 	Comment       *string      `json:"comment,omitempty"`
-	Rastamp       *string      `json:"rastamp,omitempty"`
+	Rastamp       *Rastamp     `json:"rastamp,omitempty"`
 	Unit          *Unit        `json:"unit,omitempty"`
 	Accessgroup   *Accessgroup `json:"Accessgroup,omitempty"`
 }

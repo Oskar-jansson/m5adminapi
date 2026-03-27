@@ -246,7 +246,7 @@ func (s *CardService) MergeCards(c1, c2 models.Card) *models.Card {
 		Timecodetype:      coalesceUint32(c2.Timecodetype, c1.Timecodetype),
 		Timebookings:      coalesceString(c2.Timebookings, c1.Timebookings),
 		Booktype:          coalesceString(c2.Booktype, c1.Booktype),
-		Rastamp:           coalesceString(c2.Rastamp, c1.Rastamp),
+		Rastamp:           coalesce(c2.Rastamp, c1.Rastamp), //nolint:all
 		Phoneshort:        coalesceString(c2.Phoneshort, c1.Phoneshort),
 		Phonetele:         coalesceString(c2.Phonetele, c1.Phonetele),
 		Phoneteleall:      coalesceString(c2.Phoneteleall, c1.Phoneteleall),
@@ -258,10 +258,10 @@ func (s *CardService) MergeCards(c1, c2 models.Card) *models.Card {
 		Refguid:           coalesceString(c2.Refguid, c1.Refguid),
 		Selectpindatetime: coalesceString(c2.Selectpindatetime, c1.Selectpindatetime),
 		Apireference:      coalesceString(c2.Apireference, c1.Apireference),
-		Changedby:         coalesceString(c2.Changedby, c1.Changedby),
-		Changeddate:       coalesceString(c2.Changeddate, c1.Changeddate),
-		Createdby:         coalesceString(c2.Createdby, c1.Createdby),
-		Createddate:       coalesceString(c2.Createddate, c1.Createddate),
+		Changedby:         coalesce(c2.Changedby, c1.Changedby),     //nolint:all
+		Changeddate:       coalesce(c2.Changeddate, c1.Changeddate), //nolint:all
+		Createdby:         coalesce(c2.Createdby, c1.Createdby),     //nolint:all
+		Createddate:       coalesce(c2.Createddate, c1.Createddate), //nolint:all
 		Asciicard:         coalesceBool(c2.Asciicard, c1.Asciicard),
 		Showregister:      coalesceBool(c2.Showregister, c1.Showregister),
 		Pinblocked:        coalesceBool(c2.Pinblocked, c1.Pinblocked),

@@ -233,7 +233,7 @@ func (s *UserService) MergeUsers(u1, u2 models.User) *models.User {
 		Type:                  coalesceUint32(u2.Type, u1.Type),
 		Fkdepartment:          coalesceUint32(u2.Fkdepartment, u1.Fkdepartment),
 		Fkusergroup:           coalesceUint32(u2.Fkusergroup, u1.Fkusergroup),
-		Rastamp:               coalesceString(u2.Rastamp, u1.Rastamp),
+		Rastamp:               coalesce(u2.Rastamp, u1.Rastamp), //nolint:all
 		Fkfloor:               coalesceUint32(u2.Fkfloor, u1.Fkfloor),
 		Status:                coalesceUint32(u2.Status, u1.Status),
 		Startdate:             coalesceString(u2.Startdate, u1.Startdate),
@@ -245,10 +245,10 @@ func (s *UserService) MergeUsers(u1, u2 models.User) *models.User {
 		Customfield9:          coalesceString(u2.Customfield9, u1.Customfield9),
 		Customfield10:         coalesceString(u2.Customfield10, u1.Customfield10),
 		Apireference:          coalesceString(u2.Apireference, u1.Apireference),
-		Changedby:             coalesceString(u2.Changedby, u1.Changedby),
-		Changeddate:           coalesceString(u2.Changeddate, u1.Changeddate),
-		Createdby:             coalesceString(u2.Createdby, u1.Createdby),
-		Createddate:           coalesceString(u2.Createddate, u1.Createddate),
+		Changedby:             coalesce(u2.Changedby, u1.Changedby),     //nolint:all
+		Changeddate:           coalesce(u2.Changeddate, u1.Changeddate), //nolint:all
+		Createdby:             coalesce(u2.Createdby, u1.Createdby),     //nolint:all
+		Createddate:           coalesce(u2.Createddate, u1.Createddate), //nolint:all
 		Showregister:          coalesceBool(u2.Showregister, u1.Showregister),
 		Cardgroupname:         coalesceString(u2.Cardgroupname, u1.Cardgroupname),
 		Message:               coalesceString(u2.Message, u1.Message),

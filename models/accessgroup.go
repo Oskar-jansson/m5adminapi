@@ -37,11 +37,11 @@ type Accessgroup struct {
 	Refguid       *string `json:"refguid" validate:"required"`
 	Apidooraccess *uint32 `json:"apidooraccess" validate:"required"`
 
-	Changedby   *string `json:"changedby" validate:"required" cmp:"skip"`
-	Changeddate *string `json:"changeddate" validate:"required" cmp:"skip"`
-	Createdby   *string `json:"createdby" validate:"required" cmp:"skip"`
-	Createddate *string `json:"createddate" validate:"required" cmp:"skip"`
-	Rastamp     *string `json:"rastamp" validate:"required" cmp:"skip"`
+	Changedby   *ChangedBy   `json:"changedby" validate:"required" cmp:"skip"`
+	Changeddate *ChangedDate `json:"changeddate" validate:"required" cmp:"skip"`
+	Createdby   *CreatedBy   `json:"createdby" validate:"required" cmp:"skip"`
+	Createddate *CreatedDate `json:"createddate" validate:"required" cmp:"skip"`
+	Rastamp     *Rastamp     `json:"rastamp" validate:"required" cmp:"skip"`
 
 	Cards         []Card         `json:"cards"`
 	Users         []User         `json:"users"`

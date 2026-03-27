@@ -146,7 +146,7 @@ func (s *FunctionService) MergeFunctions(f1, f2 models.Function) *models.Functio
 		Activedays:    coalesceString(f2.Activedays, f1.Activedays),
 		Type:          coalesceUint32(f2.Type, f1.Type),
 		Comment:       coalesceString(f2.Comment, f1.Comment),
-		Rastamp:       coalesceString(f2.Rastamp, f1.Rastamp),
+		Rastamp:       coalesce(f2.Rastamp, f1.Rastamp), //nolint:all
 		Unit:          coalesce[models.Unit](f2.Unit, f1.Unit),
 		Accessgroup:   coalesce[models.Accessgroup](f2.Accessgroup, f1.Accessgroup),
 	}

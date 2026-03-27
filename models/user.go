@@ -25,7 +25,7 @@ type User struct {
 	Type                  *uint32       `json:"type"`
 	Fkdepartment          *uint32       `json:"fkdepartment"`
 	Fkusergroup           *uint32       `json:"fkusergroup"`
-	Rastamp               *string       `json:"rastamp" validate:"required" cmp:"skip"`
+	Rastamp               *Rastamp      `json:"rastamp" validate:"required" cmp:"skip"`
 	Fkfloor               *uint32       `json:"fkfloor"`
 	Status                *uint32       `json:"status" validate:"required"`
 	Startdate             *string       `json:"startdate" validate:"required"`
@@ -37,10 +37,10 @@ type User struct {
 	Customfield9          *string       `json:"customfield9"`
 	Customfield10         *string       `json:"customfield10"`
 	Apireference          *string       `json:"apireference"`
-	Changedby             *string       `json:"changedby" validate:"required" cmp:"skip"`
-	Changeddate           *string       `json:"changeddate" validate:"required" cmp:"skip"`
-	Createdby             *string       `json:"createdby" validate:"required" cmp:"skip"`
-	Createddate           *string       `json:"createddate" validate:"required" cmp:"skip"`
+	Changedby             *ChangedBy    `json:"changedby" validate:"required" cmp:"skip"`
+	Changeddate           *ChangedDate  `json:"changeddate" validate:"required" cmp:"skip"`
+	Createdby             *CreatedBy    `json:"createdby" validate:"required" cmp:"skip"`
+	Createddate           *CreatedDate  `json:"createddate" validate:"required" cmp:"skip"`
 	Showregister          *bool         `json:"showregister" validate:"required"`
 	Cardgroupname         *string       `json:"cardgroupname"`
 	Message               *string       `json:"message"`
@@ -87,7 +87,7 @@ type UserInput struct {
 
 	// non writeable. But needed for valid PATCH requests.
 	// Should always be current Rastamp of said user.
-	Rastamp *string `json:"rastamp,omitempty"`
+	Rastamp *Rastamp `json:"rastamp,omitempty"`
 
 	Type          *uint32 `json:"type,omitempty"`
 	Fkdepartment  *uint32 `json:"fkdepartment,omitempty"`

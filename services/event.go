@@ -121,15 +121,9 @@ func (s *EventService) StartEventstream(mainCtx context.Context, bufferSize int,
 
 // Requests events that matches provided options to be sent over eventstream.
 //
-// Any request made before stream is active will return sdkError.Err = "eventstream not active".
-// To avoid complicatd logic to request events, wrap this function in rety
-func (s *EventService) RequestEventsToStream(ctx context.Context, es *Eventstream, opt ...string) *models.SdkError {
-
-	if !es.HasSeenFirstEvent.Load() {
-
-		// Any request to /events will be voided if stream is not active.
-		return &models.SdkError{Err: fmt.Errorf("eventstream not active")}
-	}
+// Any request to /events will be voided if stream is not active. 
+// Use HasSeenFirstEvent to determine if stream is active
+func (s *EventService) RequestEventsToStream(ctx context.Context, opt ...string) *models.SdkError {
 
 	url := fmt.Sprintf("%s/event", s.client.Path)
 
